@@ -1,0 +1,22 @@
+
+
+.nav {
+    grid-area: n;
+    margin-top: 10px;
+    margin-left: 25px;
+    margin-top: 20px;
+}
+
+.item a {
+
+    color: #285473;
+    font-family: Roboto;
+    font-size: 15px;
+    line-height: 1.6;
+    text-decoration: none;
+
+}
+
+.item .activeLink {
+    color: gold;
+}
