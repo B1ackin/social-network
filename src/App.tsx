@@ -25,14 +25,10 @@ function App(props: PostsType) {
                 <div className="app-wrapper">
                     <Header/>
                     <Navbar/>
-                    <h2>Новое изменение</h2>
-                    <h1>тест коммит</h1>
                     <div className='app-wrapper-content'>
                         <Route path="/profile" render={() => <Profile profilePage={props.state.profilePage} addPost={props.addPost}/>}/>
                         <Route path="/dialogs"
                                render={() => <Dialogs dialogsPage={props.state.dialogsPage}/>}/>
-                        <h1>тест коммит</h1>
-                        <h1>тест коммит</h1>
                     </div>
                 </div>
             </div>
