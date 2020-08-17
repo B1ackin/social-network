@@ -78,7 +78,7 @@ let state: StateType = {
         likesCount: 0
 
     }
-
+debugger
     state.profilePage.posts.push(newPost)
      state.profilePage.newPostText = "";
      rerenderEntireTree(state);
