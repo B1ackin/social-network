@@ -9,7 +9,7 @@ import state, {addPost, ProfilePagePropsType, updateNewPostText} from "../../red
 
 type PropsType = {
     profilePage: ProfilePagePropsType
-    addPost: () => void
+    addPost: (message: string ) => void
     updateNewPostText: (newText: string) => void
 }
 

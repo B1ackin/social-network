@@ -11,7 +11,7 @@ import {DialogsPageType, StateType, updateNewPostText} from "./redux/State";
 
 export type PostsType = {
    state: StateType
-   addPost: () => void
+   addPost: (message: string ) => void
    updateNewPostText: (newText: string ) => void
 }
 
