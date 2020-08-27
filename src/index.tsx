@@ -1,12 +1,25 @@
-import React from 'react';
 import './index.css';
+import store, {StateType} from "./redux/State";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {rerenderEntireTree} from "./render";
-import state from "./redux/State";
+// import {addPost, StateType, updateNewPostText} from "./redux/State";
 
+export let rerenderEntireTree = (state: StateType) => {
+    ReactDOM.render(
+        <React.StrictMode>
+            <App state={store.getState()}
+                 dispatch={store.dispatch.bind(store)}/>
+        </React.StrictMode>,
+        document.getElementById('root')
+    );
+}
 
+rerenderEntireTree(store.getState());
 
-rerenderEntireTree(state);
+store.subscribe(rerenderEntireTree);
 
 
 
