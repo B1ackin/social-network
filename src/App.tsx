@@ -5,13 +5,12 @@ import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
-import {StateType} from "./redux/State";
+import {AddPostActionType, StateType} from "./redux/State";
 
 
 export type PostsType = {
-   state: StateType
-   addPost: (message: string ) => void
-   updateNewPostText: (newText: string ) => void
+    state: StateType
+    dispatch: (action: AddPostActionType) => void
 }
 
 
