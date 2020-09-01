@@ -5,12 +5,13 @@ import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
-import {AddPostActionType, StateType} from "./redux/State";
+import store, {ActionsTypes, StateType, StoreType} from "./redux/State";
 
 
 export type PostsType = {
+    store: StoreType
     state: StateType
-    dispatch: (action: AddPostActionType) => void
+    dispatch: (action: ActionsTypes) => void
 }
 
 
@@ -29,7 +30,7 @@ function App(props: PostsType) {
                             profilePage={props.state.profilePage}
                             dispatch={props.dispatch}/>}/>
                         <Route path="/dialogs"
-                               render={() => <Dialogs dialogsPage={props.state.dialogsPage}/>}/>
+                               render={() => <Dialogs store={props.store}  dispatch={props.dispatch}/>}/>
                     </div>
                 </div>
             </div>

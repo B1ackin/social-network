@@ -3,13 +3,13 @@ import './Profile.module.css';
 import s from './Profile.module.css';
 import MyPosts, {PostsTypeArray} from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import state, {AddPostActionType, ProfilePagePropsType} from "../../redux/State";
+import state, {ActionsTypes, ProfilePagePropsType} from "../../redux/State";
 
 
 
 type PropsType = {
     profilePage: ProfilePagePropsType
-    dispatch: (action: AddPostActionType) => void
+    dispatch: (action: ActionsTypes) => void
 }
 
 

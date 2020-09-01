@@ -3,8 +3,8 @@ import './MyPosts.module.css';
 import s from './MyPosts.module.css';
 import Post from "./Post/Post";
 import {
+    ActionsTypes,
     addPostActionCreator,
-    AddPostActionType,
     updateNewPostTextActionCreator
 } from "../../../redux/State";
 
@@ -12,7 +12,7 @@ import {
 export type PostsTypeArray = {
     posts: Array<PostsType>
     newPostText: string
-    dispatch: (action: AddPostActionType) => void
+    dispatch: (action: ActionsTypes) => void
 
 
 }
@@ -36,10 +36,8 @@ function MyPosts(props: PostsTypeArray) {
     }
 
     let onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        debugger
         let text = newPostElement.current ? newPostElement.current.value : "";
        // let textEvent = e.currentTarget.value
-        debugger
         // let action = {type: "UPDATE-NEW-POST-TEXT", newText: text};
         let action = updateNewPostTextActionCreator(text);
         props.dispatch( action );
