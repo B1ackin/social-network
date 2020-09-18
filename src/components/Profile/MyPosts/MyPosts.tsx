@@ -2,18 +2,14 @@ import React, {ChangeEvent} from 'react';
 import './MyPosts.module.css';
 import s from './MyPosts.module.css';
 import Post from "./Post/Post";
-import {
-    ActionsTypes,
-    addPostActionCreator,
-    updateNewPostTextActionCreator
-} from "../../../redux/State";
 
 
 export type PostsTypeArray = {
     posts: Array<PostsType>
     newPostText: string
-    dispatch: (action: ActionsTypes) => void
-
+    // dispatch: (action: ActionsTypes) => void
+    updateNewPostText: (text:string)=> void
+    addPost: ()=> void
 
 }
 export type PostsType = {
@@ -30,17 +26,15 @@ function MyPosts(props: PostsTypeArray) {
 
     let newPostElement = React.createRef<HTMLTextAreaElement>();
 
-    let addPost = () => {
-        props.dispatch(addPostActionCreator());
+    let onAddPost = () => {
+        props.addPost();
 
     }
 
     let onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let text = newPostElement.current ? newPostElement.current.value : "";
-       // let textEvent = e.currentTarget.value
-        // let action = {type: "UPDATE-NEW-POST-TEXT", newText: text};
-        let action = updateNewPostTextActionCreator(text);
-        props.dispatch( action );
+        props.updateNewPostText(text);
+
     }
 
     return (
@@ -50,7 +44,7 @@ function MyPosts(props: PostsTypeArray) {
             </div>
             <div>
                 <div><textarea onChange={onPostChange} value={props.newPostText} ref={newPostElement}/></div>
-                <div><button onClick={addPost}>Add post</button></div>
+                <div><button onClick={onAddPost}>Add post</button></div>
             </div>
             <div className={s.posts}>
                 {postElements}

@@ -3,7 +3,6 @@ import dialogReducer from "./dialog-reducer";
 import sidebarReducer from "./sidebar-reducer";
 
 
-
 let rerenderEntireTree = () => {
     console.log('state changed');
 }
@@ -39,10 +38,9 @@ export type DialogsPageType = {
 }
 
 export type StateType = {
-
     profilePage: ProfilePagePropsType
     dialogsPage: DialogsPageType
-    sidebar: string
+    sidebar: any
 
 }
 
@@ -50,48 +48,20 @@ export type StateType = {
 export type StoreType = {
     _state: StateType
     getState: () => StateType
-    dispatch: (action: ActionsTypes ) => void
+    dispatch: (action: any) => void
     _callSubscriber: (_state: StateType) => void
     subscribe: (observer: any) => void
-
-
 }
-
-// export type AddPostActionType = {
-//     type: string
-//     newPostText: string
-// }
-
-export type UpdateNewMessageBody = {
-    type: typeof UPDATE_NEW_MESSAGE_BODY
-    body: string
-}
-
-export type AddPostType = {
-    type: typeof ADD_POST
-
-}
-export type UpdateNewPostTextType = {
-    type: typeof UPDATE_NEW_POST_TEXT
-    newText: string
-
-}
-export type SendMessageType = {
-    type: typeof SEND_MESSAGE
-
-}
-
-export type ActionsTypes = AddPostType | UpdateNewMessageBody | UpdateNewPostTextType | SendMessageType
 
 
 let store: StoreType = {
     _state: {
         profilePage: {
             posts: [
-                {id:1, message: 'Hi, how are you?', likesCount: 12},
-                {id:2, message: 'Its my first post', likesCount: 11},
-                {id:2, message: 'Its my first post', likesCount: 11},
-                {id:2, message: 'Its my first post', likesCount: 11}
+                {id: 1, message: 'Hi, how are you?', likesCount: 12},
+                {id: 2, message: 'Its my first post', likesCount: 11},
+                {id: 2, message: 'Its my first post', likesCount: 11},
+                {id: 2, message: 'Its my first post', likesCount: 11}
 
             ],
             newPostText: 'IT-KAMASUTRA.COM'
@@ -115,14 +85,14 @@ let store: StoreType = {
         },
         sidebar: {}
     },
-    _callSubscriber () {
+    _callSubscriber() {
         console.log('state changed');
     },
 
     getState() {
         return this._state;
     },
-    subscribe (observer: any) {
+    subscribe(observer: any) {
         this._callSubscriber = observer;
     },
 
@@ -135,7 +105,6 @@ let store: StoreType = {
         this._callSubscriber(this._state);
 
     }
-
 
 
 }
