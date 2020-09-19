@@ -19,24 +19,33 @@ export type PostsType = {
 }
 
 
-
 const MyPostsCountainer = (props: PostsTypeArray) => {
 
-    let state = props.store.getState();
-
-    let addPost = () => {
-        props.store.dispatch(addPostActionCreator());
-
-    }
-
-    let onPostChange = (text: string) => {
-        let action = updateNewPostTextActionCreator(text);
-        props.store.dispatch( action );
-    }
-
     return (
-        <MyPosts updateNewPostText={onPostChange} addPost={addPost} posts={state.profilePage.posts} newPostText={state.profilePage.newPostText}/>
-    );
-}
+        <StoreContext.Consumer>
+            {
+            (store) => {
+                let state = props.store.getState();
 
+                let addPost = () => {
+                    store.dispatch(addPostActionCreator());
+
+                }
+
+                let onPostChange = (text: string) => {
+                    let action = updateNewPostTextActionCreator(text);
+                    store.dispatch(action);
+                }
+
+
+                return <MyPosts updateNewPostText={onPostChange}
+                                addPost={addPost}
+                                posts={state.profilePage.posts}
+                                newPostText={state.profilePage.newPostText}/>
+        }
+        }
+            </StoreContext.Consumer>
+    );
+
+}
 export default MyPostsCountainer;

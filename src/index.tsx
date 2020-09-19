@@ -9,7 +9,9 @@ import * as serviceWorker from './serviceWorker';
 export let rerenderEntireTree = (state: AppStateType) => {
     ReactDOM.render(
         <React.StrictMode>
-            <App dispatch={store.dispatch.bind(store)} store={store}/>
+            <StoreContext.Provider value={store}>
+            <App />
+            </StoreContext.Provider>
         </React.StrictMode>,
         document.getElementById('root')
     );

@@ -19,11 +19,7 @@ function Profile(props: PropsType) {
     return (
         <div>
             <ProfileInfo/>
-            <MyPostsCountainer store={props.store}
-                               // posts={props.profilePage.posts}
-                               // newPostText={props.profilePage.newPostText}
-                               // dispatch={props.dispatch}
-            />
+            <MyPostsCountainer />
         </div>
     );
 }
