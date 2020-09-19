@@ -6,15 +6,16 @@ import Profile from "./components/Profile/Profile";
 import {BrowserRouter, Route} from "react-router-dom";
 import {StoreType} from "./redux/store";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import {PostsType} from "./components/Profile/MyPosts/MyPosts";
 
 
-export type PostsType = {
-    store: StoreType
-    dispatch: (action: any) => void
-}
+// export type PostsType = {
+//     store: StoreType
+//     dispatch: (action: any) => void
+// }
 
 
-function App(props: PostsType) {
+function App() {
 
     return (
         <BrowserRouter>

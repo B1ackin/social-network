@@ -2,50 +2,45 @@ import React from 'react';
 import './MyPosts.module.css';
 import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
 import MyPosts from "./MyPosts";
-import {StoreType} from "../../../redux/store";
+import {StateType, StoreType} from "../../../redux/store";
+import {connect} from "react-redux";
 
 
-export type PostsTypeArray = {
+// export type PostsTypeArray = {
     // posts: Array<PostsType>
     // newPostText: string
     // dispatch: (action: ActionsTypes) => void
-    store: StoreType
+//     store: StoreType
+// }
+
+// export type PostsType = {
+//     id: number
+//     message: string
+//     likesCount: number
+// }
+
+
+const mapStateToProps = (state:StateType) => {
+    return {
+        posts: state.profilePage.posts,
+        newPostText: state.profilePage.newPostText
+    }
 }
 
-export type PostsType = {
-    id: number
-    message: string
-    likesCount: number
-}
-
-
-const MyPostsCountainer = (props: PostsTypeArray) => {
-
-    return (
-        <StoreContext.Consumer>
-            {
-            (store) => {
-                let state = props.store.getState();
-
-                let addPost = () => {
-                    store.dispatch(addPostActionCreator());
-
-                }
-
-                let onPostChange = (text: string) => {
-                    let action = updateNewPostTextActionCreator(text);
-                    store.dispatch(action);
-                }
-
-
-                return <MyPosts updateNewPostText={onPostChange}
-                                addPost={addPost}
-                                posts={state.profilePage.posts}
-                                newPostText={state.profilePage.newPostText}/>
+const mapDispatchToProps = (dispatch: (action: any) => void) => {
+    return {
+        updateNewPostText: (text: string) => {
+            let action = updateNewPostTextActionCreator(text);
+            dispatch(action);
+        },
+        addPost: () => {
+            dispatch(addPostActionCreator());
         }
-        }
-            </StoreContext.Consumer>
-    );
-
+    }
 }
-export default MyPostsCountainer;
+
+
+
+const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
+
+export default MyPostsContainer;
