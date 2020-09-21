@@ -15,8 +15,8 @@ function Dialogs(props:PropsType) {
 
     let state = props.dialogsPage;
 
-    let dialogElements = state.dialogsData.map(d => <DialogItem name={d.name} id={d.id}/>);
-    let messageElements = state.messageData.map(m => <Message message={m.message}/>);
+    let dialogElements = state.dialogsData.map(d => <DialogItem name={d.name} key={d.id} id={d.id}/>);
+    let messageElements = state.messageData.map(m => <Message message={m.message} key={m.id}/>);
     let newMessageBody = state.newMessageBody;
 
     // let NewMessageElement = React.createRef<HTMLTextAreaElement>();
