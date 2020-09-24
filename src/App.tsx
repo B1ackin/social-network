@@ -7,6 +7,7 @@ import {BrowserRouter, Route} from "react-router-dom";
 import {StoreType} from "./redux/store";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import {PostsType} from "./components/Profile/MyPosts/MyPosts";
+import Users from "./components/Users/Users";
 
 
 // export type PostsType = {
@@ -26,8 +27,12 @@ function App() {
                     <Navbar/>
                     <div className='app-wrapper-content'>
                         <Route path="/profile" render={() => <Profile />}/>
+
                         <Route path="/dialogs"
                                render={() => <DialogsContainer/>}/>
+
+                        <Route path="/users"
+                               render={() => <Users/> }/>
                     </div>
                 </div>
             </div>
