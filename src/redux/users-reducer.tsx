@@ -8,18 +8,34 @@ export type UnfollowPropsType = {
     type: typeof UNFOLLOW
     userId: number
 }
+export type setUsersPropsType = {
+    type: typeof SET_USERS
+    users: string
+}
+// export type StateUsersPropsType = {
+//     users: Array<UserPropsType>
+// }
+//
+// type UserPropsType = {
+//     id: number
+//     followed: boolean
+//     fullName: string
+//     status: string
+//     location: LocationPropsType
+// }
+//
+// type LocationPropsType = {
+//     city: string
+//     country: string
+// }
 
 let initialState = {
-    users: [
-        {id:1, followed: false, fullName: 'Dmitry', status: "I am a boss", location: {city: "Minsk", country: "Belarus"}},
-        {id:2, followed: true, fullName: 'Matvey', status: "I am a boss too", location: {city: "Moskov", country: "Russia"}},
-        {id:3, followed: false, fullName: 'Kirill', status: "I am a boss too", location: {city: "Kiev", country: "Ukraine"}},
-
-    ]
+    users: []
 }
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
+const SET_USERS = 'SET_USERS';
 
 export const usersReducer = (state = initialState, action:any) => {
 
@@ -44,6 +60,11 @@ export const usersReducer = (state = initialState, action:any) => {
                     return u;
                 })
             }
+        case SET_USERS:
+            return {
+            ...state,
+            users: [...state.users, ...action.users]
+        }
         default:
             return state;
     }
@@ -57,6 +78,11 @@ export const followAC = (userId: number): FollowPostType => ({
 export const unFollowAC = (userId:number): UnfollowPropsType => ({
     type: UNFOLLOW,
     userId
+})
+
+export const setUsersAC = (users:string): setUsersPropsType => ({
+    type: SET_USERS,
+    users
 })
 
 export default usersReducer;

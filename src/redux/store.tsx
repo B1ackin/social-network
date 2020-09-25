@@ -42,6 +42,7 @@ export type StateType = {
     dialogsPage: DialogsPageType
     sidebar: any
 
+
 }
 
 
