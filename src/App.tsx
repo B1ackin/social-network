@@ -8,12 +8,6 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 
 
-// export type PostsType = {
-//     store: StoreType
-//     dispatch: (action: any) => void
-// }
-
-
 function App() {
 
     return (

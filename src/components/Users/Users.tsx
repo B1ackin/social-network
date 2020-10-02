@@ -1,10 +1,16 @@
 import React from 'react';
 import styles from './users.module.css';
+import {UsersType} from "../../redux/users-reducer";
+
+type UsersPropsType ={
+    users: Array<UsersType>
+    setUsers: (users:Array<UsersType>) => void
+    follow: (id: number) => void
+    unfollow: (id: number) => void
+}
 
 
-
-
-let Users = (props) => {
+let Users = (props: UsersPropsType) => {
     if(props.users.length === 0) {
     props.setUsers([
         {id:1, photoUrl: 'https://pbs.twimg.com/profile_images/753121652251193344/FrnVVqCw_400x400.jpg', followed: false, fullName: 'Dmitry', status: "I am a boss", location: {city: "Minsk", country: "Belarus"}},

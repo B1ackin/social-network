@@ -10,34 +10,35 @@ export type UnfollowPropsType = {
 }
 export type setUsersPropsType = {
     type: typeof SET_USERS
-    users: string
+    users: Array<UsersType>
 }
 // export type StateUsersPropsType = {
 //     users: Array<UserPropsType>
 // }
 //
-// type UserPropsType = {
-//     id: number
-//     followed: boolean
-//     fullName: string
-//     status: string
-//     location: LocationPropsType
-// }
+export type UsersType = {
+    id: number
+    followed: boolean
+    fullName: string
+    status: string
+    location: LocationType
+    photoUrl: string
+}
 //
-// type LocationPropsType = {
-//     city: string
-//     country: string
-// }
+export type LocationType = {
+    city: string
+    country: string
+}
 
 let initialState = {
-    users: []
+    users: [] as Array<UsersType>
 }
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 
-export const usersReducer = (state = initialState, action:any) => {
+export const usersReducer = (state = initialState, action:any):typeof initialState => {
 
     switch (action.type) {
         case FOLLOW:
@@ -75,12 +76,12 @@ export const followAC = (userId: number): FollowPostType => ({
     type: FOLLOW,
     userId
 })
-export const unFollowAC = (userId:number): UnfollowPropsType => ({
+export const unfollowAC = (userId:number): UnfollowPropsType => ({
     type: UNFOLLOW,
     userId
 })
 
-export const setUsersAC = (users:string): setUsersPropsType => ({
+export const setUsersAC = (users:Array<UsersType>): setUsersPropsType => ({
     type: SET_USERS,
     users
 })
