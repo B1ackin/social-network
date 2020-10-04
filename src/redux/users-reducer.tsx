@@ -19,10 +19,15 @@ export type setUsersPropsType = {
 export type UsersType = {
     id: number
     followed: boolean
-    fullName: string
+    name: string
     status: string
     location: LocationType
-    photoUrl: string
+    photos: PhotosType
+}
+
+export type PhotosType = {
+    small: string
+    large: string
 }
 //
 export type LocationType = {
