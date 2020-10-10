@@ -12,6 +12,9 @@ function Navbar() {
                 <NavLink to="/dialogs" activeClassName={s.activeLink}>Сообщения</NavLink>
             </div>
             <div className={s.item}>
+                <NavLink to="/users" activeClassName={s.activeLink}> Пользователи</NavLink>
+            </div>
+            <div className={s.item}>
                 <NavLink to="/news" activeClassName={s.activeLink}>Новости</NavLink>
             </div>
             <div className={s.item}>
@@ -20,6 +23,7 @@ function Navbar() {
             <div className={s.item}>
                 <NavLink to="/settings" activeClassName={s.activeLink}> Настройки</NavLink>
             </div>
+
 
         </nav>
     );
