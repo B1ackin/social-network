@@ -6,3 +6,7 @@
 .selectedPage {
     font-weight: 700;
 }
+
+.unSelectedPage {
+    color: red;
+}

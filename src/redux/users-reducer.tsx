@@ -37,8 +37,8 @@ export type LocationType = {
 
 let initialState = {
     users: [] as Array<UsersType>,
-    pageSize: 5,
-    totalUsersCount: 0,
+    pageSize: 50,
+    totalUsersCount: 10,
     currentPage: 1
 
 }
@@ -50,7 +50,6 @@ const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_USER_COUNT = 'SET_TOTAL_USER_COUNT';
 
 export const usersReducer = (state = initialState, action:any):typeof initialState => {
-
     switch (action.type) {
         case FOLLOW:
             return {
@@ -72,10 +71,11 @@ export const usersReducer = (state = initialState, action:any):typeof initialSta
                     return u;
                 })
             }
+
         case SET_USERS:
             return {
             ...state,
-            users: action.users.currentPage
+            users: action.users
         }
         case SET_CURRENT_PAGE:
             return {
@@ -110,6 +110,7 @@ export const setUsersAC = (users:Array<UsersType>): setUsersPropsType => ({
 export const setCurrentPageAC = (currentPage: number) => ({
     type: SET_CURRENT_PAGE,
     currentPage
+
 })
 
     export const setTotalUsersCountAC = (totalUsersCount:number) => ({
