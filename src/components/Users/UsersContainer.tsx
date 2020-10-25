@@ -4,12 +4,12 @@ import {UsersType} from "../../redux/users-reducer";
 import axios from 'axios';
 import preloader from '../../assets/images/unnamed.gif'
 import {
-    followAC,
-    setCurrentPageAC,
-    setTotalUsersCountAC,
-    setUsersAC,
-    unfollowAC,
-    toggleIsFetchingAC
+    follow,
+    setCurrentPage,
+    setTotalUsersCount,
+    setUsers,
+    unfollow,
+    toggleIsFetching
 } from "../../redux/users-reducer";
 import {AppStateType} from "../../redux/redux-store";
 import {Dispatch} from "redux";
@@ -90,29 +90,31 @@ let mapStateToProps = (state:AppStateType): MSTPType => {
         isFetching: state.usersPage.isFetching
     }
 }
-let mapDispatchToProps = (dispatch: Dispatch): MDTPType => {
-    return {
-        follow: (userID: number) => {
-            dispatch(followAC(userID));
-        },
-        unfollow: (userID: number) => {
-            dispatch(unfollowAC(userID));
-        },
-        setUsers: (users: Array<UsersType>) => {
-            dispatch(setUsersAC(users));
-        },
-        setCurrentPage: (pageNumber: number) => {
-            dispatch(setCurrentPageAC(pageNumber))
-        },
-        setTotalUsersCount: (totalCount: number) => {
-            dispatch(setTotalUsersCountAC(totalCount))
-        },
-        toggleIsFetching: (isFetching: boolean) => {
-            dispatch(toggleIsFetchingAC(isFetching))
-        }
+// let mapDispatchToProps = (dispatch: Dispatch): MDTPType => {
+//     return {
+//         follow: (userID: number) => {
+//             dispatch(followAC(userID));
+//         },
+//         unfollow: (userID: number) => {
+//             dispatch(unfollowAC(userID));
+//         },
+//         setUsers: (users: Array<UsersType>) => {
+//             dispatch(setUsersAC(users));
+//         },
+//         setCurrentPage: (pageNumber: number) => {
+//             dispatch(setCurrentPageAC(pageNumber))
+//         },
+//         setTotalUsersCount: (totalCount: number) => {
+//             dispatch(setTotalUsersCountAC(totalCount))
+//         },
+//         toggleIsFetching: (isFetching: boolean) => {
+//             dispatch(toggleIsFetchingAC(isFetching))
+//         }
+//
+//     }
+// }
 
-    }
-}
 
-
-export default connect<MSTPType, MDTPType, OwnProps, AppStateType> (mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect<MSTPType, MDTPType, OwnProps, AppStateType> (mapStateToProps, {
+        follow, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching, unfollow
+})(UsersContainer);
