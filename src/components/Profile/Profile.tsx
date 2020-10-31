@@ -7,18 +7,17 @@ import state, {ProfilePagePropsType, StoreType} from "../../redux/store";
 import MyPostsCountainer from "./MyPosts/MyPostsContainer";
 
 
-// type PropsType = {
-//     // profilePage: ProfilePagePropsType
-//     // dispatch: (action: ActionsTypes) => void
-//     store: StoreType
-// }
+type PropsType = {
+
+    profile: any
+}
 
 
-function Profile() {
+function Profile(props:PropsType) {
 
     return (
         <div>
-            <ProfileInfo/>
+            <ProfileInfo profile={props.profile}/>
             <MyPostsCountainer />
         </div>
     );
