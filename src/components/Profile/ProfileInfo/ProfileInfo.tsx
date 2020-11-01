@@ -2,9 +2,10 @@ import React from 'react';
 import s from './ProfileInfo.module.css';
 import ava from './obl.jpg';
 import {Preloader} from "../../common/preloader/preloader";
+import {ProfileType} from "../Profile";
 
 type PropsType = {
-    profile: any
+    profile: ProfileType | null
 }
 
 
@@ -19,7 +20,7 @@ function ProfileInfo(props:PropsType) {
             <img
                 src={ava}/>
             <div className={s.descriptionBlock}>
-                <img src={props.profile.photos.large}/>
+                <img src={props.profile.photos.large || undefined}/>
                 avatar + description
             </div>
 

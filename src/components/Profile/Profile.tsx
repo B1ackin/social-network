@@ -8,8 +8,35 @@ import MyPostsCountainer from "./MyPosts/MyPostsContainer";
 
 
 type PropsType = {
-
-    profile: any
+    profile: ProfileType | null
+}
+export type PostDataArray = {
+    id: string
+    message: string
+    like: number
+}
+export type ContactsType = {
+    facebook: string
+    website: string
+    vk: string
+    twitter: string
+    instagram: string
+    youtube: string
+    github: string
+    mainLink: string
+}
+export type PhotosType = {
+    small: string | null
+    large: string | null
+}
+export type ProfileType = {
+    userId: number
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    aboutMe: string
+    fullName: string
+    contacts: ContactsType
+    photos: PhotosType
 }
 
 

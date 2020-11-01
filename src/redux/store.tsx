@@ -1,6 +1,7 @@
 import {profileReducer} from "./profile-reducer";
 import dialogReducer from "./dialog-reducer";
 import sidebarReducer from "./sidebar-reducer";
+import {ProfileType} from "../components/Profile/Profile";
 
 
 let rerenderEntireTree = () => {
@@ -26,6 +27,7 @@ export type MessageDataPropsType = {
 
 export type ProfilePagePropsType = {
     newPostText: string
+    profile: ProfileType | null
     posts: Array<PostPropsType>
 }
 
@@ -64,7 +66,8 @@ let store: StoreType = {
                 {id: 2, message: 'Its my first post', likesCount: 11}
 
             ],
-            newPostText: 'IT-KAMASUTRA.COM'
+            newPostText: 'IT-KAMASUTRA.COM',
+            profile: null
 
         },
 

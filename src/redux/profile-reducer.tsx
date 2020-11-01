@@ -1,4 +1,5 @@
 import {PostPropsType} from "./store";
+import {ProfileType} from "../components/Profile/Profile";
 
 export type AddPostType = {
     type: typeof ADD_POST
@@ -19,7 +20,7 @@ let initialState = {
 
     ],
         newPostText: 'IT-KAMASUTRA.COM',
-        profile: null
+        profile: null as ProfileType | null
 }
 
 const ADD_POST = 'ADD-POST';
