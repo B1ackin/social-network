@@ -67,7 +67,7 @@ export const updateNewPostTextActionCreator = (text: string): UpdateNewPostTextT
     type: UPDATE_NEW_POST_TEXT, newText: text
 })
 
-export const setUserProfile = (profile: any) => ({
+export const setUserProfile = (profile: ProfileType) => ({
     type: SET_USER_PROFILE, profile
 })
 
