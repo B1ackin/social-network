@@ -1,12 +1,23 @@
 import React from 'react';
 import s from './Header.module.css';
+import {NavLink} from "react-router-dom";
 
-function Header() {
+type PropsType = {
+    isAuth?: boolean
+    login?: string
+}
+
+function Header(props: PropsType) {
     return  (
 
         <header className={s.header}>
 
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Vkontakte.png/1200px-Vkontakte.png" alt="logo"/>
+
+            <div className={s.loginBlock}>
+                {props.isAuth ? props.login
+                    : <NavLink to={'/login'}>Login</NavLink> }
+            </div>
 
         </header>
     )
