@@ -1,10 +1,11 @@
 import React from 'react';
 import s from './Header.module.css';
 import {NavLink} from "react-router-dom";
+import {setAuthUserData} from "../../redux/auth-reducer";
 
 type PropsType = {
     isAuth?: boolean
-    login?: string
+    login?: string | null
 }
 
 function Header(props: PropsType) {
