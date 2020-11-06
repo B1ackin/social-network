@@ -14,6 +14,8 @@ type PropsUserType = {
     onPageChanged: (pageNumber: number) => void
     follow: (userID: number) => void
     unfollow: (userID: number) => void
+    toggleFollowingProgress: (isFetching:boolean, userId:number) => void
+    followingInProgress: Array<number>
 }
 
 let Users = (props: PropsUserType) => {
@@ -45,7 +47,7 @@ let Users = (props: PropsUserType) => {
                     </div>
                     <div>
                         { u.followed
-                            ? <button disabled={props.toggleFollowingProgress.some(id => id === u.id)} onClick={ () => {
+                            ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={ () => {
                                 props.toggleFollowingProgress(true, u.id);
                                 axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,  {
                                     withCredentials: true,
@@ -62,7 +64,7 @@ let Users = (props: PropsUserType) => {
 
 
                             }}>Unfollow</button>
-                            : <button disabled={props.toggleFollowingProgress.some(id => id === u.id)} onClick={ () => {
+                            : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={ () => {
                                 props.toggleFollowingProgress(true, u.id);
                                 axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
                                     withCredentials: true,

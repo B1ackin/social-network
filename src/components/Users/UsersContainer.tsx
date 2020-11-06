@@ -20,6 +20,7 @@ export type MSTPType = {
     totalUsersCount: number
     currentPage: number
     isFetching: boolean
+    followingInProgress: Array<number>
 }
 export type MDTPType = {
     follow: (userID: number) => void
@@ -28,6 +29,7 @@ export type MDTPType = {
     setCurrentPage: (pageNumber: number) => void
     setTotalUsersCount: (totalCount: number) => void
     toggleIsFetching: (isFetching: boolean) => void
+    toggleFollowingProgress: (isFetching:boolean, userId:number) => void
 }
 
 type OwnProps = {
@@ -74,7 +76,6 @@ class UsersContainer extends React.Component<PropsType> {
             unfollow={this.props.unfollow}
             toggleFollowingProgress={this.props.toggleFollowingProgress}
             followingInProgress={this.props.followingInProgress}
-
         />
     </>
     }
@@ -118,5 +119,5 @@ let mapStateToProps = (state:AppStateType): MSTPType => {
 
 
 export default connect<MSTPType, MDTPType, OwnProps, AppStateType> (mapStateToProps, {
-        follow, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching, unfollow, toggleFollowingProgress
+        follow, unfollow, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching, toggleFollowingProgress
 })(UsersContainer);

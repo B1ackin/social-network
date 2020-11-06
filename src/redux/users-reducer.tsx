@@ -1,5 +1,3 @@
-import {PostPropsType} from "./store";
-
 export type FollowPostType = {
     type: typeof FOLLOW
     userId: number
@@ -32,14 +30,17 @@ export type LocationType = {
     country: string
 }
 
+export type FollowType = {
+
+}
+
 let initialState = {
     users: [] as Array<UsersType>,
     pageSize: 50,
     totalUsersCount: 10,
     currentPage: 1,
     isFetching: true,
-    followingInProgress: []
-
+    followingInProgress: [] as Array<any>
 }
 
 const FOLLOW = 'FOLLOW';
@@ -96,7 +97,7 @@ export const usersReducer = (state = initialState, action:any):typeof initialSta
         case TOGGLE_IS_FOLLOWING_PROGRESS:
             return {
             ...state,
-            followingInProgress: action.isFetching
+                followingInProgress: action.isFetching
                 ? [...state.followingInProgress, action.userId]
                 : state.followingInProgress.filter(id => id != action.userId)
         }
