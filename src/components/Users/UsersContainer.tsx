@@ -96,14 +96,14 @@ let mapStateToProps = (state:AppStateType): MSTPType => {
 // let mapDispatchToProps = (dispatch: Dispatch): MDTPType => {
 //     return {
 //         follow: (userID: number) => {
-//             dispatch(followAC(userID));
+//             dispatch(followAC(userID))
 //         },
 //         unfollow: (userID: number) => {
-//             dispatch(unfollowAC(userID));
+//             dispatch(unfollowAC(userID))
 //         },
 //         setUsers: (users: Array<UsersType>) => {
-//             dispatch(setUsersAC(users));
-//         },
+//             dispatch(setUsersAC(users))
+//         }
 //         setCurrentPage: (pageNumber: number) => {
 //             dispatch(setCurrentPageAC(pageNumber))
 //         },
