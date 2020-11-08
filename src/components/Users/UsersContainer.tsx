@@ -99,10 +99,10 @@ let mapStateToProps = (state:AppStateType): MSTPType => {
 //             dispatch(followAC(userID))
 //         },
 //         unfollow: (userID: number) => {
-//             dispatch(unfollowAC(userID))
+//             dispatch(unfollowAC(userID ))
 //         },
 //         setUsers: (users: Array<UsersType>) => {
-//             dispatch(setUsersAC(users))
+//             dispatch(setUsersAC(users ))
 //         }
 //         setCurrentPage: (pageNumber: number) => {
 //             dispatch(setCurrentPageAC(pageNumber))
