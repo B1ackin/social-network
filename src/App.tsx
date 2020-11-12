@@ -31,7 +31,6 @@ function App() {
                     </div>
                 </div>
             </div>
-            <h1>Привет</h1>
         </BrowserRouter>
     );
 }
