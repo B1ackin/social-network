@@ -1,5 +1,6 @@
 import {PostPropsType} from "./store";
 import {authAPI} from "../api/api";
+import {Dispatch} from "redux";
 
 export type FollowPostType = {
     type: typeof SET_USER_DATA
@@ -65,7 +66,7 @@ export const setAuthUserData = (userId: number, email: string, login: string): F
     data: {userId , email, login}
 })
 
-export const getAuthUserData = () => (dispatch) => {
+export const getAuthUserData = () => (dispatch: Dispatch) => {
     authAPI.me().then(response => {
         if(response.data.resultCode === 0) {
             let {id, email, login} = response.data.data;

@@ -26,9 +26,9 @@ let Users = (props: PropsUserType) => {
     for(let i = 1 ; i <= pagesCount; i++) {
         pages.push(i);
     }
-
     return <div>
         <div>
+
             {pages.map( p => {
                 return <span className={props.currentPage === p ? styles.selectedPage : styles.unSelectedPage}
                              onClick={ (e) => {props.onPageChanged(p)}}>{p}

@@ -1,4 +1,5 @@
 import {usersAPI} from "../api/api";
+import {Dispatch} from "redux";
 
 export type FollowPostType = {
     type: typeof FOLLOW
@@ -145,7 +146,7 @@ export const toggleFollowingProgress = (isFetching: boolean, userId: number) => 
 
 export const getUsersThunkCreator = (currentPage: number, pageSize: number) => {
 
-    return (dispatch) => {
+    return (dispatch: Dispatch) => {
         dispatch(toggleIsFetching(true))
 
         usersAPI.getUsers(currentPage, pageSize).then(data => {
@@ -156,9 +157,9 @@ export const getUsersThunkCreator = (currentPage: number, pageSize: number) => {
     }
 }
 
-export const follow = (userId) => {
+export const follow = (userId: number) => {
 
-    return (dispatch) => {
+    return (dispatch: Dispatch) => {
         (toggleFollowingProgress(true, userId))
         usersAPI.follow(userId)
 
@@ -171,9 +172,9 @@ export const follow = (userId) => {
     }
 }
 
-export const unfollow = (userId) => {
+export const unfollow = (userId: number) => {
 
-    return (dispatch) => {
+    return (dispatch: Dispatch) => {
         dispatch(toggleFollowingProgress(true, userId))
         usersAPI.unfollow(userId)
             .then(response => {
