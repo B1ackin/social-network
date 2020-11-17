@@ -14,6 +14,18 @@ let reducers = combineReducers({
     auth: authReducer
 });
 
+// reducer {
+//     prP: {
+//
+//     },
+//     diP: [
+//         {},
+//         {},
+//         {},
+//         {},
+//     ]
+// }
+
 let store:any = createStore(reducers, applyMiddleware(thunkMiddleware));
 
 // window.store = store;

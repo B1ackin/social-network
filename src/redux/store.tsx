@@ -36,12 +36,14 @@ export type DialogsPageType = {
     messageData: Array<MessageDataPropsType>
     newMessageBody: string
 
+
 }
 
 export type StateType = {
     profilePage: ProfilePagePropsType
     dialogsPage: DialogsPageType
     sidebar: any
+
 
 
 }
