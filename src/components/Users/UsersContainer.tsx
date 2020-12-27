@@ -13,6 +13,7 @@ import {connect} from "react-redux";
 import Users from "./Users";
 import {Preloader} from "../common/preloader/preloader";
 import {usersAPI} from "../../api/api";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 export type MSTPType = {
     users: Array<UsersType>
@@ -84,5 +85,6 @@ let mapStateToProps = (state:AppStateType): MSTPType => {
 }
 
 
-export default connect<MSTPType, MDTPType, {}, AppStateType> (mapStateToProps, {
-    follow, unfollow, getUsersThunkCreator, setCurrentPage, toggleFollowingProgress})(UsersContainer);
+
+export default withAuthRedirect(connect<MSTPType, MDTPType, {}, AppStateType> (mapStateToProps, {
+    follow, unfollow, getUsersThunkCreator, setCurrentPage, toggleFollowingProgress})(UsersContainer));

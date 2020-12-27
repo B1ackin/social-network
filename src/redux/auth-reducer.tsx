@@ -12,10 +12,7 @@ export type FollowPostType = {
 
 }
 
-// export type StateUsersPropsType = {
-//     users: Array<UserPropsType>
-// }
-//
+
 export type UsersType = {
     id: number
     followed: boolean
