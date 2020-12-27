@@ -4,6 +4,7 @@ import {sendMessageCreator, updateNewMessageBodyCreator} from '../../redux/dialo
 import {connect} from "react-redux";
 import {AppStateType} from "../../redux/redux-store";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 
 let mapStateToProps = (state: AppStateType) => {
@@ -23,9 +24,17 @@ let mapDispatchToProps = (dispatch: (action: any) => void) => {
     }
 }
 
-let AuthRedirectComponent = withAuthRedirect(Dialogs)
+// compose(
+//     connect(mapStateToProps,mapDispatchToProps),
+//     withAuthRedirect
+// )(Dialogs)
+//
+// let AuthRedirectComponent = withAuthRedirect(Dialogs)
+//
+//
+// const SuperDialogsContainer = connect(mapStateToProps,mapDispatchToProps)(AuthRedirectComponent);
 
-
-const SuperDialogsContainer = connect(mapStateToProps,mapDispatchToProps)(AuthRedirectComponent);
-
-export default SuperDialogsContainer;
+export default compose(
+    connect(mapStateToProps,mapDispatchToProps),
+    withAuthRedirect
+)(Dialogs);
