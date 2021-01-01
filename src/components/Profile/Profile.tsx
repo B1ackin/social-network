@@ -9,6 +9,9 @@ import MyPostsCountainer from "./MyPosts/MyPostsContainer";
 
 type PropsType = {
     profile: ProfileType | null
+    status: string
+    updateStatus: (status: string) => void
+
 }
 export type PostDataArray = {
     id: string
@@ -37,6 +40,7 @@ export type ProfileType = {
     fullName: string
     contacts: ContactsType
     photos: PhotosType
+
 }
 
 
@@ -44,7 +48,7 @@ function Profile(props:PropsType) {
 
     return (
         <div>
-            <ProfileInfo profile={props.profile}/>
+            <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus}/>
             <MyPostsCountainer />
         </div>
     );
