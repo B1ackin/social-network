@@ -5,11 +5,7 @@ import {Dispatch} from "redux";
 
 export type AddPostType = {
     type: typeof ADD_POST
-
-}
-export type UpdateNewPostTextType = {
-    type: typeof UPDATE_NEW_POST_TEXT
-    newText: string
+    newPostText: string
 
 }
 
@@ -21,14 +17,12 @@ let initialState = {
         {id:2, message: 'Its my first post', likesCount: 11}
 
     ],
-        newPostText: 'IT-KAMASUTRA.COM',
         profile: null as ProfileType | null,
         status: ""
 
 }
 
 const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_STATUS = "SET_STATUS"
 
@@ -38,19 +32,13 @@ export const profileReducer = (state = initialState, action:any) => {
         case ADD_POST: {
             let newPost: PostPropsType ={
                 id: 5,
-                message: state.newPostText,
+                message: action.newPostText,
                 likesCount: 0
             };
             return {
                 ...state,
                 posts:[...state.posts, newPost],
                 newPostText: ""
-            };
-        }
-        case UPDATE_NEW_POST_TEXT: {
-            return {
-                ...state,
-                newPostText: action.newText
             };
         }
         case SET_USER_PROFILE: {
@@ -71,13 +59,10 @@ export const profileReducer = (state = initialState, action:any) => {
 
 }
 
-export const addPostActionCreator = (): AddPostType => ({
-    type: ADD_POST
+export const addPostActionCreator = (newPostText:string): AddPostType => ({
+    type: ADD_POST,
+    newPostText
 })
-export const updateNewPostTextActionCreator = (text: string): UpdateNewPostTextType => ({
-    type: UPDATE_NEW_POST_TEXT, newText: text
-})
-
 export const setUserProfile = (profile: ProfileType) => ({
     type: SET_USER_PROFILE, profile
 })

@@ -6,19 +6,6 @@ import {StateType, StoreType} from "../../../redux/store";
 import {connect} from "react-redux";
 
 
-// export type PostsTypeArray = {
-    // posts: Array<PostsType>
-    // newPostText: string
-    // dispatch: (action: ActionsTypes) => void
-//     store: StoreType
-// }
-
-// export type PostsType = {
-//     id: number
-//     message: string
-//     likesCount: number
-// }
-
 
 const mapStateToProps = (state:StateType) => {
     return {
@@ -29,12 +16,9 @@ const mapStateToProps = (state:StateType) => {
 
 const mapDispatchToProps = (dispatch: (action: any) => void) => {
     return {
-        updateNewPostText: (text: string) => {
-            let action = updateNewPostTextActionCreator(text);
-            dispatch(action);
-        },
-        addPost: () => {
-            dispatch(addPostActionCreator());
+
+        addPost: (newPostText: string) => {
+            dispatch(addPostActionCreator(newPostText));
         }
     }
 }

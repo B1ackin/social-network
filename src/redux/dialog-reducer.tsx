@@ -1,6 +1,5 @@
 import {DialogsDataPropsType, MessageDataPropsType} from "./store";
 
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
 const SEND_MESSAGE = 'SEND-MESSAGE';
 
 export type DialogsDataPropsType1 = {
@@ -34,24 +33,18 @@ let initialState: DialogsPageType1 = {
         {id: 2, message: 'How is you it-kamasutra'},
         {id: 3, message: 'Oh, my dear friend'}
     ],
-    newMessageBody: ""
+
 }
 
 
 export const dialogReducer = (state: DialogsPageType1 = initialState, action: DialogsActionType): DialogsPageType1 => {
 
     switch (action.type) {
-        case UPDATE_NEW_MESSAGE_BODY:
-            return {
-                ...state,
-                newMessageBody: action.body
-            };
 
         case SEND_MESSAGE:
-            let body = state.newMessageBody;
+            let body = action.newMessageBody;
             return {
                 ...state,
-                newMessageBody: '',
                 messageData: [...state.messageData, {id: 6, message: body}]
             };
         default:
@@ -59,13 +52,11 @@ export const dialogReducer = (state: DialogsPageType1 = initialState, action: Di
     }
 }
 
-export const sendMessageCreator = (): SendMessageType => ({
-    type: SEND_MESSAGE
+export const sendMessageCreator = (newMessageBody): SendMessageType => ({
+    type: SEND_MESSAGE,
+    newMessageBody
 })
 
-export const updateNewMessageBodyCreator = (body: string): UpdateNewMessageBody => ({
-    type: UPDATE_NEW_MESSAGE_BODY, body
-})
 
 export type UpdateNewMessageBody = {
     type: typeof UPDATE_NEW_MESSAGE_BODY
