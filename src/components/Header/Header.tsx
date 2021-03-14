@@ -6,6 +6,7 @@ import {setAuthUserData} from "../../redux/auth-reducer";
 type PropsType = {
     isAuth?: boolean
     login?: string | null
+    
 }
 
 function Header(props: PropsType) {
@@ -16,7 +17,8 @@ function Header(props: PropsType) {
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Vkontakte.png/1200px-Vkontakte.png" alt="logo"/>
 
             <div className={s.loginBlock}>
-                {props.isAuth ? props.login
+                {props.isAuth
+                    ? <div>{props.login} - <button onClick={props.logout}>Log out</button></div>
                     : <NavLink to={'/login'}>Login</NavLink> }
             </div>
 
