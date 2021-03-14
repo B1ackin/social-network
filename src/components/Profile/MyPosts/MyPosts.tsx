@@ -2,15 +2,17 @@ import React, {ChangeEvent} from 'react';
 import './MyPosts.module.css';
 import s from './MyPosts.module.css';
 import Post from "./Post/Post";
-import  {reduxForm,Field} from "redux-form";
+import {reduxForm, Field, InjectedFormProps} from "redux-form";
+import {maxLengthCreator, required} from "../../../utils/Validators/Validators";
+import {Textarea} from "../../common/FormControls/FormControls";
 
 
 export type PostsTypeArray = {
     posts: Array<PostsType>
     newPostText: string
     // dispatch: (action: ActionsTypes) => void
-    updateNewPostText: (text: string) => void
-    addPost: () => void
+    // updateNewPostText: (text: string) => void
+    addPost: (newMessageBody: string) => void
 
 }
 export type PostsType = {
@@ -26,7 +28,7 @@ function MyPosts(props: PostsTypeArray) {
 
     let newPostElement = React.createRef<HTMLTextAreaElement>();
 
-    let onAddPost = (values) => {
+    let onAddPost = (values: any) => { // как типизировать?
         props.addPost(values.newPostText);
 
     }
@@ -45,12 +47,14 @@ function MyPosts(props: PostsTypeArray) {
     );
 }
 
+const MaxLength = maxLengthCreator(10)
 
-const AddNewPost = (props) => {
+
+const AddNewPost = (props: InjectedFormProps) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field name={"newPostText"} component="textarea"/>
+                <Field name={"newPostText"} placeholder="Post message" component={Textarea} validate={[required, MaxLength]}/>
             </div>
             <div>
                 <button>Add post</button>

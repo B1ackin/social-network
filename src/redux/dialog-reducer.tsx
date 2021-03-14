@@ -2,6 +2,7 @@ import {DialogsDataPropsType, MessageDataPropsType} from "./store";
 
 const SEND_MESSAGE = 'SEND-MESSAGE';
 
+
 export type DialogsDataPropsType1 = {
     id: number
     name: string
@@ -15,7 +16,7 @@ export type MessageDataPropsType1 = {
 export type DialogsPageType1 = {
     dialogsData: Array<DialogsDataPropsType1>
     messageData: Array<MessageDataPropsType1>
-    newMessageBody: string
+
 
 }
 
@@ -52,23 +53,23 @@ export const dialogReducer = (state: DialogsPageType1 = initialState, action: Di
     }
 }
 
-export const sendMessageCreator = (newMessageBody): SendMessageType => ({
+export const sendMessageCreator = (newMessageBody: string): SendMessageType => ({
     type: SEND_MESSAGE,
     newMessageBody
 })
 
 
-export type UpdateNewMessageBody = {
-    type: typeof UPDATE_NEW_MESSAGE_BODY
-    body: string
-}
+// export type UpdateNewMessageBody = {
+//     body: string
+//     newMessageBody: string
+// }
 
 export type SendMessageType = {
     type: typeof SEND_MESSAGE
-
+    newMessageBody: string
 }
 
-type DialogsActionType = UpdateNewMessageBody | SendMessageType
+type DialogsActionType = SendMessageType
 
 
 export default dialogReducer;

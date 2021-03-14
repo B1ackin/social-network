@@ -4,14 +4,16 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {DialogsPageType, StoreType} from "../../redux/store";
 import {Redirect} from 'react-router-dom';
-import {Field} from "redux-form";
+import {Field, InjectedFormProps} from "redux-form";
 import {reduxForm} from "redux-form";
+import {maxLengthCreator, required} from "../../utils/Validators/Validators";
+import AddMessageForm from "./AddMessageForm/AddMessageForm";
 
 
 type PropsType = {
     // dispatch: (action: ActionsTypes) => void
     updateNewMessageBody: (body: string) => void
-    sendMessage: () => void
+    sendMessage: (newMessageBody: string) => void
     dialogsPage: DialogsPageType
     isAuth: boolean
 }
@@ -25,7 +27,7 @@ function Dialogs(props: PropsType) {
     let newMessageBody = state.newMessageBody;
 
 
-    let addNewMessage = (values) => {
+    let addNewMessage = (values: any) => {
         props.sendMessage(values.newMessageBody)
     }
 
@@ -38,26 +40,13 @@ function Dialogs(props: PropsType) {
             <div className={s.messages}>
                 <div>{messageElements}</div>
             </div>
-            <AddMessageFormRedux onSubmit={addNewMessage}/>
+            <AddMessageForm onSubmit={addNewMessage}/>
         </div>
     );
 
 }
 
-const AddMessageForm = (props) => {
-    return (
-        <form onSubmit={props.handleSubmit}>
-            <div>
-                <Field component={"textarea"} name="newMessageBody" placeholder={'Enter your message'}/>
-            </div>
-            <div>
-                <button>Send</button>
-            </div>
-        </form>
-    )
-}
 
-const AddMessageFormRedux = reduxForm({form: "dialogAddMessageForm"})(AddMessageForm)
 
 
 export default Dialogs;
