@@ -6,7 +6,7 @@ import {stopSubmit} from "redux-form";
 export type FollowPostType = {
     type: typeof SET_USER_DATA
     payload: {
-        userId: number
+        userId: number,
         email: string,
         login: string,
         isAuth: boolean
@@ -79,8 +79,8 @@ export const login = (email: string, password: string, remeberMe: boolean) => (d
             if(response.data.resultCode === 0) {
                 dispatch(getAuthUserData())
         } else {
-                const action = stopSubmit("login" , {email: "Email is wrong"})
-                dispatch(action)
+                let message = response.data.messages.lenght > 0 ? response.data.messages[0] : "Some error";
+                dispatch(stopSubmit("login" , {_error: "Common error"}))
             }
     })
 }
