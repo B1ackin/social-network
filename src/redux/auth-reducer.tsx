@@ -1,6 +1,7 @@
 import {PostPropsType} from "./store";
 import {authAPI} from "../api/api";
 import {Dispatch} from "redux";
+import {stopSubmit} from "redux-form";
 
 export type FollowPostType = {
     type: typeof SET_USER_DATA
@@ -72,11 +73,15 @@ export const getAuthUserData = () => (dispatch: Dispatch) => {
     })
 }
 export const login = (email: string, password: string, remeberMe: boolean) => (dispatch: Dispatch) => {
+
     authAPI.login(email, password, remeberMe)
         .then(response => {
             if(response.data.resultCode === 0) {
                 dispatch(getAuthUserData())
-        }
+        } else {
+                const action = stopSubmit("login" , {email: "Email is wrong"})
+                dispatch(action)
+            }
     })
 }
 export const logout = () => (dispatch: Dispatch) => {
