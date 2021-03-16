@@ -6,6 +6,7 @@ import {setAuthUserData} from "../../redux/auth-reducer";
 type PropsType = {
     isAuth?: boolean
     login?: string | null
+    logout: () => void
     
 }
 

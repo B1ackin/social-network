@@ -5,12 +5,7 @@ import {stopSubmit} from "redux-form";
 
 export type FollowPostType = {
     type: typeof SET_USER_DATA
-    payload: {
-        userId: number,
-        email: string,
-        login: string,
-        isAuth: boolean
-    }
+    payload: InitStateType
 
 }
 
@@ -35,17 +30,19 @@ export type LocationType = {
 }
 
 let initialState = {
-    userId: null,
-    email: null,
-    login: null,
+    userId: null as number | null,
+    email: null as string | null,
+    login: null as string | null,
     isAuth: false
 }
 
+
+
 const SET_USER_DATA = 'SET_USER_DATA';
 
+type InitStateType  =typeof initialState
 
-
-export const authReducer = (state = initialState, action:any):typeof initialState => {
+export const authReducer = (state = initialState, action:any):InitStateType => {
     switch (action.type) {
         case SET_USER_DATA:
             return {
@@ -59,7 +56,7 @@ export const authReducer = (state = initialState, action:any):typeof initialStat
 
 }
 
-export const setAuthUserData = (userId: number, email: string, login: string, isAuth: boolean): FollowPostType => ({
+export const setAuthUserData = (userId: number | null, email: string | null, login: string | null, isAuth: boolean): FollowPostType => ({
     type: SET_USER_DATA,
     payload: {userId , email, login, isAuth}
 })
@@ -72,7 +69,7 @@ export const getAuthUserData = () => (dispatch: Dispatch) => {
         }
     })
 }
-export const login = (email: string, password: string, remeberMe: boolean) => (dispatch: Dispatch) => {
+export const login = (email: string, password: string, remeberMe: boolean) => (dispatch: Dispatch<any>) => {
 
     authAPI.login(email, password, remeberMe)
         .then(response => {

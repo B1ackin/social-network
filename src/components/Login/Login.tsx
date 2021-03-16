@@ -67,7 +67,7 @@ const Login = (props: LoginType) => {
     </div>
 }
 
-const mapStateToProps = (state:AppStateType) => {
+const mapStateToProps = (state:AppStateType) => ({
     isAuth: state.auth.isAuth
-}
+})
 export default connect(mapStateToProps, {login})(Login);
