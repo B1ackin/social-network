@@ -86,7 +86,7 @@ let mapStateToProps = (state:AppStateType): MSTPType => {
 }
 
 export default compose(
-    withAuthRedirect,
+    // withAuthRedirect,
 connect<MSTPType, MDTPType, {}, AppStateType> (mapStateToProps, {
 follow, unfollow, getUsersThunkCreator, setCurrentPage, toggleFollowingProgress})
 )(UsersContainer)
